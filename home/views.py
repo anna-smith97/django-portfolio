@@ -50,7 +50,7 @@ def jobs(request):
             if j.end_date is None:
                 j.end_date = ""
             else:
-                j.end_date = j.end_date.strftime("%B %Y")
+                j.end_date = j.end_date.strftime("%b %Y")
 
         jobs_dict[j.id] = {
             'title':j.title,
@@ -58,7 +58,7 @@ def jobs(request):
             'city': j.city,
             'state': j.state,
             'tech':j.tech,
-            'start':j.start_date.strftime("%B %Y"),
+            'start':j.start_date.strftime("%b %Y"),
             'end':j.end_date,
             'tasks':[]
             }
