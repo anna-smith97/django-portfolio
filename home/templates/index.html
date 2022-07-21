@@ -2,36 +2,25 @@
 {% load static %}
 
 {% block content %}
-<section class="section">
-    <div class="container">
-        <h1 class="title">Section</h1>
-        <h2 class="subtitle">
-            A simple container to divide your page into <strong>sections</strong>, like the one you're currently
-            reading.
-        </h2>
-        <div class="columns">
+  <!-- only includes contact if context includes tiles variable -->
+  {% if tiles %}
+  
 
-            <div class="column is-one-third">is-one-third</div>
-            <div class="column is-one-third">is-one-third</div>
-            <div class="column is-one-third">is-one-third</div>
+    <article class="panel">
+      <p class="panel-heading is-green">
+        contact
+      </p>
+      {% for t in tiles.tiles %}
+      <a class="panel-block" href="{{t.link}}">
+        <span class="panel-icon">
+          <i class="{{ t.icon }}" aria-hidden="true"></i>
+        </span>
+        {{ t.field }}
+      </a>
+      {% endfor %}
+    </article>
     
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-        <h1 class="title">Section</h1>
-        <h2 class="subtitle">
-            A simple container to divide your page into <strong>sections</strong>, like the one you're currently
-            reading.
-        </h2>
-        <div class="columns">
+    {% endif %}
 
-            <div class="column is-one-third">is-one-third</div>
-            <div class="column is-one-third">is-one-third</div>
-            <div class="column is-one-third">is-one-third</div>
-    
-        </div>
-    </div>
-</section>
+
 {% endblock %}

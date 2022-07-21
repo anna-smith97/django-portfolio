@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Mono&display=swap');
+
+
+/* 
+--middle-blue-green: #89CCC2ff;
+--forest-green-traditional: #003B00ff;
+--onyx: #3C3C3Cff;
+--alice-blue: #DDF3FEff;
+--yellow-green-color-wheel: #00BB00ff; 
+*/
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.tr{
+    padding: 1em 1.25em;
+}
+.is-monospace{
+    font-family: 'Roboto Mono', monospace;
+
+}
+.is-dark{
+    background-color: #3C3C3Cff;
+}
+.text-is-green{
+    color: #00BB00ff;
+
+}
+.is-green{
+    background-color: #00BB00ff;
+}

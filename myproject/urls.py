@@ -31,6 +31,7 @@ import home.views
 
 urlpatterns = [
     path("", home.views.index, name="index"),
-    path("jobs/", home.views.jobs, name="jobs"),
+    path("db/", home.views.db, name="db"),
+    path("experience/", home.views.jobs, name="jobs"),
     path("admin/", admin.site.urls),
 ]
