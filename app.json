@@ -1,7 +1,6 @@
 {
-    "name": "Start on Heroku: Python",
-    "description": "A barebones Python app, which can easily be deployed to Heroku.",
-    "image": "heroku/python",
+    "name": "Djano Portfolio",
+    "description": "A barebones Python app, modified into a portfolio",
     "repository": "https://github.com/anna-smith97/django-portfolio",
     "keywords": ["python", "django" ],
     "addons": [ "heroku-postgresql" ],
