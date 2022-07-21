@@ -20,6 +20,8 @@
   <section class="hero is-dark is-large">
     <!-- Hero head: will stick at the top -->
     <div class="hero-head">
+
+ 
     </div>
     <!-- Hero content: will be in the middle -->
     <div class="hero-body">
@@ -50,11 +52,21 @@
   {% block content %}
   {% endblock %}
  </div>
+ <div class="columns is-mobile">
+  <div class="column is-one-half"></div>
+  
+  <div class="column">
+    <figure class="image is-128x128">
+      <img class="is-rounded is-pulled-right" src="{% static '/100.jpg' %}" alt="Image of Me">
+    </figure>    
+  </div>
+</div>
   <section class="hero is-dark is-align-content-end">
     <div class="content has-text-centered ">
-      <p>Put links here again</p>
+      <p>.</p>
     </div>
   </section>
+  
 </body>
 
 </html>

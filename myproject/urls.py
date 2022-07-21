@@ -35,3 +35,5 @@ urlpatterns = [
     path("experience/", home.views.jobs, name="jobs"),
     path("admin/", admin.site.urls),
 ]
+
+

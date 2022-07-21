@@ -4,21 +4,28 @@
 {% block content %}
   <!-- only includes contact if context includes tiles variable -->
   {% if tiles %}
+  {% load static %}
+
+      <article class="panel">
+        <p class="panel-heading is-green">
+          contact
+        </p>
+        {% for t in tiles.tiles %}
+        <a class="panel-block" href="{{t.link}}">
+          <span class="panel-icon">
+            <i class="{{ t.icon }}" aria-hidden="true"></i>
+          </span>
+          {{ t.field }}
+        </a>
+        {% endfor %}
+      </article>
+
+  
   
 
-    <article class="panel">
-      <p class="panel-heading is-green">
-        contact
-      </p>
-      {% for t in tiles.tiles %}
-      <a class="panel-block" href="{{t.link}}">
-        <span class="panel-icon">
-          <i class="{{ t.icon }}" aria-hidden="true"></i>
-        </span>
-        {{ t.field }}
-      </a>
-      {% endfor %}
-    </article>
+ 
+ 
+
     
     {% endif %}
 

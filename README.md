@@ -8,6 +8,7 @@
 
 ## Useful links
 
+https://docs.djangoproject.com/en/4.0/intro/tutorial01/
 
 ## Root Directory
 
@@ -90,3 +91,21 @@ Located at http://127.0.0.1:8000/
 # Activate virtual environment
     
     .env\Scripts\activate
+
+
+# postgressql
+
+heroku pg:psql
+
+\dt
+    list data tables
+
+\d table_name
+SELECT * FROM home_job
+INSERT INTO home_job 
+(company,tech,title,city,start_date,end_date,state, current) 
+VALUES 
+('East Alabama Medical Center', 'PowerShell, Python', 'Insurance Analyst', 'Auburn','2020-01-01','2021-12-01','AL', TRUE);
+
+INSERT INTO home_jobsummary(task, job_id) VALUES ('Managed Data in Google BigQuery', 2);
+INSERT INTO home_job (id,company,tech,title,city,start_date,state, current) VALUES (2, 'Spirit', 'Python', 'Ecommerce Analyst', 'Miami','2021-12-01','FL', TRUE);

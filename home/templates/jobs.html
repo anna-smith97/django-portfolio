@@ -1,16 +1,16 @@
 {% extends "base.html" %}
-{% load static %}
-
 {% block content %}
-
 {% if myjobs %}
-{% for job in myjobs %}
+{% for j in myjobs %}
 
 <div class="card mb-2">
     <header class="card-header">
         <p class="card-header-title is-size-4">
-            {{ job.0 }} at {{ job.1 }}
+            {{ j.title }}
+            at
+            {{j.company}}
         </p>
+        <br>
         <button class="card-header-icon" aria-label="more options">
             <span class="icon">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -19,18 +19,33 @@
     </header>
     <div class="card-content">
         <div class="content">
-            <p class="is-monospace text-is-green">About</p>
-            <p class="is-size-6">{{ job.2 }}</p>
-            <p class="is-monospace text-is-green">Tech</p>
-            <p class="is-size-6">{{ job.3 }}</p>
+            <p class="is-monospace text-is-green is-size-4">About</p>
+            {%for t in j.tasks%}
+            <p class="is-size-6">{{ t }}</p>
+            {% endfor %}
+            <p class="is-monospace text-is-green is-size-4">Tech</p>
+            <p class="is-size-6">{{ j.tech }}</p>
         </div>
     </div>
     <footer class="card-footer">
+        <div class="card-footer-item">
+        <p>{{j.start}} - {{j.end}}</p>
+    </div>
+    <div class="card-footer-item">
+        <p class="is-size-6">
+            <span class="icon">
+            <i class="fa-solid fa-map-pin"></i>
+            </span>
+            <span>
+            {{ j.city }}, {{j.state}}
+        </span>
+        </p>
+    </div>
     </footer>
 </div>
 
-  {% endfor %}
-  {% endif %}
 
-
+{% endfor %}
+</div>
+{% endif %}
 {% endblock %}
