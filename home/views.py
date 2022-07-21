@@ -30,7 +30,7 @@ def jobs(request):
     context = {
     "title": "Portfolio - Anna Smith", 
     "herotitle": "Hi, I'm Anna",
-    "herosubtitle": "python develpment, data engineering, & more",
+    "herosubtitle": "python development, data engineering, & more",
     "links": [
     ['home','not-active','/'],
     # ['projects','not-active','/projects'],
