@@ -1,10 +1,6 @@
 # Development Notes
-    Issues with migrating over to wsl ubuntu for workflow
-    restarted venv
-    python -m venv env
     env\Scripts\activate
-    pip install -r requirements.txt
-    python -m pip install --upgrade pip
+
 
 ## Useful links
 
