@@ -14,6 +14,7 @@ powershell write-host -fore Green DJ: Pushing to heroku...
 git push heroku master
 heroku ps:scale web=1
 heroku open
+goto commonexit
 
 :djrun
 powershell write-host -fore Green DJ: Running server...
