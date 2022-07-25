@@ -38,15 +38,19 @@ def index(request):
             job_obj_values['end'] = "Current"
             
         jobs_dict[i] = job_obj_values
+ 
         summary_obj = JobSummary.objects.filter(job_id=j.id).all()
         for s in summary_obj:
             job_summary_list.append(str(s))
         
         jobs_dict[i]['tasks'] = job_summary_list
+        job_summary_list = []
 
 
+    
     context['myjobs'] = jobs_dict
 
+    
     return render(request, "index.html", context)
 
 
