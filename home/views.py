@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import GeneralContext, Job, JobSummary, Tech
 from datetime import date
+import collections
 
 gc = GeneralContext()
 
@@ -26,7 +27,7 @@ def index(request):
     gc.links['Experience']['status'] = "is-active"
 
 
-    job_obj = Job.objects.all()
+    job_obj = Job.objects.all().order_by('-current','-end_date')
     jobs_dict = {}
     job_summary_list = []
 
@@ -46,11 +47,9 @@ def index(request):
         jobs_dict[i]['tasks'] = job_summary_list
         job_summary_list = []
 
-
     
     context['myjobs'] = jobs_dict
 
-    
     return render(request, "index.html", context)
 
 
