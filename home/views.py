@@ -49,37 +49,6 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def jobs(request):
-    gc.links['Home']['status'] = "not-active"
-    gc.links['Experience']['status'] = "is-active"
-    context = {
-        "title": gc.title, 
-        "herotitle": gc.herotitle,
-        "herosubtitle": gc.herosubtitle,
-        "links": gc.links
-        }
-
-    job_obj = Job.objects.all()
-    jobs_dict = {}
-    job_summary_list = []
-    i = 0
-    for j in job_obj:
-        i +=1
-        job_obj_values = j.__repr__()
-        if job_obj_values['current'] == True:
-            job_obj_values['end'] = "Current"
-            
-        jobs_dict[i] = job_obj_values
-        summary_obj = JobSummary.objects.filter(job_id=j.id).all()
-        for s in summary_obj:
-            job_summary_list.append(str(s))
-        
-        jobs_dict[i]['tasks'] = job_summary_list
-
-    
-    context['myjobs'] = jobs_dict
-
-    return render(request, "jobs.html", context)
 
 
 

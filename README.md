@@ -108,28 +108,4 @@ INSERT INTO home_job (id,company,tech,title,city,start_date,state, current) VALU
 
 PATH=%PATH%;C:\Program Files\PostgreSQL\13\bin
 
-<div class="container py-3 ">
-<div id="div1" class="fa fa-2xl"></div>
-</div>
-
-<script>
-function filltemp() {
-  var a;
-  a = document.getElementById("div1");
-  a.innerHTML = "&#xf2cb";;
-  setTimeout(function () {
-      a.innerHTML = "&#xf2ca;";
-    }, 1000);
-  setTimeout(function () {
-      a.innerHTML = "&#xf2c9;";
-    }, 2000);
-  setTimeout(function () {
-      a.innerHTML = "&#xf2c8;";
-    }, 3000);
-  setTimeout(function () {
-      a.innerHTML = "&#xf2c7;";
-    }, 4000);
-}
-filltemp();
-setInterval(filltemp, 5000);
-</script>
+set PATH=%PATH%;C:\Program Files\PostgreSQL\13\bin
