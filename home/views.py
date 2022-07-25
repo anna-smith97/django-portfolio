@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import GeneralContext, Job, JobSummary
+from .models import GeneralContext, Job, JobSummary, Tech
 from datetime import date
 
 gc = GeneralContext()
@@ -29,6 +29,7 @@ def index(request):
     job_obj = Job.objects.all()
     jobs_dict = {}
     job_summary_list = []
+
     i = 0
     for j in job_obj:
         i +=1
@@ -43,7 +44,7 @@ def index(request):
         
         jobs_dict[i]['tasks'] = job_summary_list
 
-    
+
     context['myjobs'] = jobs_dict
 
     return render(request, "index.html", context)

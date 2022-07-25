@@ -2,8 +2,21 @@ from django.contrib import admin
 
 # Register your models here.
 from .models import Job, Education, JobSummary, Tech
-admin.site.register(Job)
+from django.apps import apps
+
 admin.site.register(Education)
-admin.site.register(JobSummary)
 admin.site.register(Tech)
+
+
+admin.site.register(JobSummary)
+
+
+
+class JobSummaryInline(admin.TabularInline):
+    model = JobSummary
+
+class JobAdmin(admin.ModelAdmin):
+    inlines = (JobSummaryInline, )
+
+admin.site.register(Job, JobAdmin)
 

@@ -14,6 +14,10 @@ class GeneralContext:
 
 
 class Education(models.Model):
+    class Meta:
+        verbose_name_plural = "Education"
+
+
     school = models.CharField(max_length=100, null=True)
     major = models.CharField(max_length=100, null=True)
     start_date = models.DateField(
@@ -27,7 +31,17 @@ class Education(models.Model):
         null=True,
     )
 
+    def __str__(self):
+        return f"{self.school}"
+
+
+
+
 class Job(models.Model):
+    class Meta:
+        verbose_name_plural = "Job"
+
+
     title = models.CharField(max_length=100, null=True)
     company = models.CharField(max_length=100, null=True)
     start_date = models.DateField(
@@ -44,9 +58,11 @@ class Job(models.Model):
     city = models.CharField(max_length=50, null=True)
     state = models.CharField(max_length=2, null=True)
     current = models.BooleanField(default=False)
+    tech = models.ManyToManyField('Tech')
+
 
     def __str__(self):
-        return self.title
+        return f"{self.title} at {self.company}"
 
     def __repr__(self):
         return {
@@ -57,9 +73,29 @@ class Job(models.Model):
             'city':self.city,
             'state':self.state,
             'current':self.current,
+            'tech':self.tech
             }
 
+
+class Tech(models.Model):
+    class Meta:
+        verbose_name_plural = "Tech"
+
+    name = models.CharField(max_length=200, null=True)
+    proficiency = models.IntegerField(
+        default=1, 
+        validators=[MaxValueValidator(10),MinValueValidator(1)])
+
+    def __str__(self):
+        return f"{self.name}"
+
+
+
 class JobSummary(models.Model):
+    class Meta:
+        verbose_name_plural = "Job Summary"
+
+
     job = models.ForeignKey("Job", on_delete=models.SET_NULL, null=True)
     task = models.CharField(max_length=200, null=True)
 
@@ -67,9 +103,3 @@ class JobSummary(models.Model):
         return self.task
 
 
-class Tech(models.Model):
-    job = models.ForeignKey("Job", on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=200, null=True)
-    proficiency = models.IntegerField(
-        default=1, 
-        validators=[MaxValueValidator(10),MinValueValidator(1)])

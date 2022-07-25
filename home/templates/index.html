@@ -9,54 +9,54 @@
 
 <div class="container mt-5 mb-3">
     <div class="row">
-        
-            {% for k, v in myjobs.items %}
-            <div class="col-md-4">
+
+        {% for k, v in myjobs.items %}
+        <div class="col-md-4">
             <div class="card p-3 mb-2">
                 <div class="cardhead d-flex justify-content-between">
                     <div class="d-flex flex-row align-items-center">
                         <div class="icon"> <i class="fa-solid fa-caret-down"></i> </div>
                         <div class="ms-2 c-details">
-                            <h6 class="mb-0 ml-1">{{v.company}}</h6> 
-                            <!-- <span class="ml-1">1 days ago</span> -->
+                            <h6 class="mb-0 ml-1">{{v.company}}</h6>
                         </div>
                     </div>
                     <div class="badge"> <span>{{v.city}}, {{v.state}}</span> </div>
                 </div>
+                <!-- section underneath the job title -->
+                <div class="mt-4">
+                    <h5 class="heading"> {{ v.title }}</h5>
+                    <h6 class="heading">About</h6>
+                    <ul class="list-group">
+                        {%for task in v.tasks%}
+                        <li class="list-group-item" style="border:none">
+                            {{ task }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <h6 class="heading">Tech</h6>
 
-                <div class="mt-5">   
-                    <h5 class="heading"> {{ v.title }}</h3>
-                    <div class="mt-5">
-                        <p class="ccard-subtitle">About</p>
-                        <ul class="list-group">
-                            {%for t in v.tasks%}
-                            <li class="list-group-item" style="border:none">
-                                {{ t }}
-                            </li>
-                            {% endfor %}
-                        </ul>
-                        <p class="ccard-subtitle">Tech</p>
-                        <ul class="list-group">
-                        
-                            <li class="list-group-item" style="border:none">
-                            </li>
-                       
-                        </ul>
-                        <div class="cardtail mt-3 text-center"> 
-                            <span class="text1">{{v.start}} -
-                                <span class="text2">{{v.end}}</span>
-                            </span> 
-                        </div>
+                    <ul class="list-group">
+                        {%for tech in v.tech.all%}
+
+                        <li class="list-group-item" style="border:none">
+                            {{ tech }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="cardtail mt-3 text-center">
+                        <span class="text1">{{v.start}} -
+                            <span class="text2">{{v.end}}</span>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-            {% endfor %}
+        {% endfor %}
 
-        
 
-   
-</div>
+
+
+    </div>
 </div>
 
 
