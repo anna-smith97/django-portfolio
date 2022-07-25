@@ -16,15 +16,15 @@
                 <div class="cardhead d-flex justify-content-between">
                     <div class="d-flex flex-row align-items-center">
                         <div class="icon"> <i class="fa-solid fa-caret-down"></i> </div>
-                        <div class="ms-2 c-details">
-                            <h6 class="mb-0 ml-1">{{v.company}}</h6>
-                        </div>
+                        <!-- <div class="ms-2 c-details">
+                            <h6 class="mb-0 ml-1"></h6>
+                        </div> -->
                     </div>
                     <div class="badge"> <span>{{v.city}}, {{v.state}}</span> </div>
                 </div>
                 <!-- section underneath the job title -->
                 <div class="mt-4">
-                    <h5 class="heading"> {{ v.title }}</h5>
+                    <h5 class="heading"> {{ v.title }} at {{v.company}}</h5>
                     <h6 class="heading">About</h6>
                     <ul class="list-group">
                         {%for task in v.tasks%}
