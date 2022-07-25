@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+/* SCSS HEX */
+$onyx: #3c3c3cff;
+$dark-turquoise: #1adfeeff;
+$baby-powder: #fffffaff;
+$green: #05ef1eff;
+$orange-red: #fe5f55ff;
+$light: whitesmoke;
+
+$theme-colors: (
+  "primary": #05ef1eff,
+  "danger": #ff4136,
+
+);
+$theme-colors: (
+  "primary":    $green,
+//   "secondary":  $secondary,
+//   "success":    $success,
+  "info":       $dark-turquoise,
+  "danger":     $orange-red,
+  "light":      $light,
+  "dark":       $onyx
+);
+
+
+.bg-body{
+    background-color: #3c3c3cff
+}
+.text-mono {
+    font-family: 'Roboto Mono', monospace;
+    
+}
+.text-special{
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.7rem;
+}
+
+.card {
+    border: none;
+    border-radius: 10px
+}
+
+.c-details span {
+    font-weight: 300;
+    font-size: 13px
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.badge span {
+    background-color: #fffbec;
+    width: 60px;
+    height: 25px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    display: flex;
+    color: #fed85d;
+    justify-content: center;
+    align-items: center
+}
+    
+.cardhead{
+border-bottom: 1px solid onyx;
+
+}
+.cardtail{
+    border-bottom: 1px solid onyx;
+}
+
+
+@import 'bootstrap/bootstrap';
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+// @import './bootstrap/mixins';
