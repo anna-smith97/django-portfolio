@@ -1,14 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+
+
 {% if myjobs %}
-{% for j in myjobs %}
+
+{% for k, v in myjobs.items %}
+
 
 <div class="card mb-2">
     <header class="card-header">
         <p class="card-header-title is-size-4">
-            {{ j.title }}
+            {{ v.title }}
             at
-            {{j.company}}
+            {{v.company}}
         </p>
         <br>
         <button class="card-header-icon" aria-label="more options">
@@ -20,24 +24,25 @@
     <div class="card-content">
         <div class="content">
             <p class="is-monospace text-is-green is-size-4">About</p>
-            {%for t in j.tasks%}
+            {%for t in v.tasks%}
             <p class="is-size-6">{{ t }}</p>
             {% endfor %}
             <p class="is-monospace text-is-green is-size-4">Tech</p>
-            <p class="is-size-6">{{ j.tech }}</p>
+            <p class="is-size-6">{{ v.tech }}</p>
         </div>
     </div>
     <footer class="card-footer">
         <div class="card-footer-item">
-        <p>{{j.start}}<br>{{j.end}}</p>
+            <p class="has-text-dark">
+        {{v.start}} - {{v.end}}</p>
     </div>
-    <div class="card-footer-item">
-        <p class="is-size-6">
+    <div class="card-footer-item dont-wrap">
+        <p class="is-size-6 has-text-dark">
             <span class="icon">
             <i class="fa-solid fa-map-pin"></i>
             </span>
             <span>
-            {{ j.city }}, {{j.state}}
+            {{ v.city }}, {{v.state}}
             </span>
         </p>
     </div>
@@ -48,4 +53,5 @@
 {% endfor %}
 </div>
 {% endif %}
+
 {% endblock %}

@@ -1,88 +1,86 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
-from .models import Job, Greeting, JobSummary
+from .models import GeneralContext, Job, JobSummary
 from datetime import date
-# Create your views here.
+
+gc = GeneralContext()
+
 def index(request):
+    gc.links['Home']['status'] = "is-active"
+    gc.links['Experience']['status'] = "not-active"
     context = {
-        "title": "Portfolio - Anna Smith", 
-        "herotitle": "Hi, I'm Anna",
-        "herosubtitle": "python development, data engineering, & more",
-        "links": [
-            ['home','is-active','/'],
-            # ['projects','not-active','/projects'],
-            ['experience','not-active','/experience']
-            ]
+        "title": gc.title, 
+        "herotitle": gc.herotitle,
+        "herosubtitle": gc.herosubtitle,
+        "links": gc.links
         }
-    context['tiles'] = {
-        "tiles": [
-            {'field': 'LinkedIn','icon':'fa-brands fa-linkedin', 'link':'/'},
-            {'field': 'GitHub','icon':'fa-brands fa-github', 'link':'https://github.com/anna-smith97/'},
-            {'field': 'Resume','icon':'fa-solid fa-folder', 'link':'/'},
-            {'field': 'Email','icon':'fa-solid fa-envelope', 'link':'/'}
-        ]
-        }
+
+    tiles = {'LinkedIn': {'field': 'LinkedIn', 'icon': 'fa-brands fa-linkedin', 'link': 'https://www.linkedin.com/in/annasmith60/'},
+             'Github': {'field': 'GitHub', 'icon': 'fa-brands fa-github', 'link': 'https://github.com/anna-smith97/'},
+             'Resume': {'field': 'Resume', 'icon': 'fa-solid fa-folder', 'link': '/'},
+             'Email': {'field': 'Email', 'icon': 'fa-solid fa-envelope', 'link': 'mailto:annaleighsmith60@gmail.com'}
+             }
+
+    context['tiles'] = tiles
+    gc.links['Home']['status'] = "not-active"
+    gc.links['Experience']['status'] = "is-active"
+
+
+    job_obj = Job.objects.all()
+    jobs_dict = {}
+    job_summary_list = []
+    i = 0
+    for j in job_obj:
+        i +=1
+        job_obj_values = j.__repr__()
+        if job_obj_values['current'] == True:
+            job_obj_values['end'] = "Current"
+            
+        jobs_dict[i] = job_obj_values
+        summary_obj = JobSummary.objects.filter(job_id=j.id).all()
+        for s in summary_obj:
+            job_summary_list.append(str(s))
+        
+        jobs_dict[i]['tasks'] = job_summary_list
+
+    
+    context['myjobs'] = jobs_dict
+
     return render(request, "index.html", context)
 
 
 def jobs(request):
+    gc.links['Home']['status'] = "not-active"
+    gc.links['Experience']['status'] = "is-active"
     context = {
-    "title": "Portfolio - Anna Smith", 
-    "herotitle": "Hi, I'm Anna",
-    "herosubtitle": "python development, data engineering, & more",
-    "links": [
-    ['home','not-active','/'],
-    # ['projects','not-active','/projects'],
-    ['experience','is-active','/experience']
-    ]
-    }
+        "title": gc.title, 
+        "herotitle": gc.herotitle,
+        "herosubtitle": gc.herosubtitle,
+        "links": gc.links
+        }
 
     job_obj = Job.objects.all()
     jobs_dict = {}
-    jobs_list = []
-    
+    job_summary_list = []
+    i = 0
     for j in job_obj:
-
-        if j.end_date is None and j.current is True:
-            j.end_date = "Current"
-        else:
-            if j.end_date is None:
-                j.end_date = ""
-            else:
-                j.end_date = j.end_date.strftime("%b %Y")
-
-        jobs_dict[j.id] = {
-            'title':j.title,
-            'company':j.company,
-            'city': j.city,
-            'state': j.state,
-            'tech':j.tech,
-            'start':j.start_date.strftime("%b %Y"),
-            'end':j.end_date,
-            'tasks':[]
-            }
+        i +=1
+        job_obj_values = j.__repr__()
+        if job_obj_values['current'] == True:
+            job_obj_values['end'] = "Current"
+            
+        jobs_dict[i] = job_obj_values
         summary_obj = JobSummary.objects.filter(job_id=j.id).all()
         for s in summary_obj:
-            jobs_dict[j.id]['tasks'].append(s.task)
+            job_summary_list.append(str(s))
         
-        jobs_list.append(jobs_dict[j.id])
-    context['myjobs'] = jobs_list
- 
+        jobs_dict[i]['tasks'] = job_summary_list
+
+    
+    context['myjobs'] = jobs_dict
+
     return render(request, "jobs.html", context)
 
-def db(request):
-    context = {
-        "title": "Portfolio - Anna Smith", 
-        "herotitle": "Hi, I'm Anna",
-        "herosubtitle": "python develpment, data engineering, & more"
-        }
-    greeting = Greeting()
-    greeting.save()
 
-    greetings = Greeting.objects.all()
-    context["greetings"] = greetings
-
-    return render(request, "db.html", context)
 
 

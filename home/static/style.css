@@ -1,18 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+*, body, html {
+    background-color: #3C3C3Cff;
+    color: whitesmoke;
+}
 
+.bggreen {
+    background-color: #00BB00ff;
+}
+.bgdark { 
+    background-color: #3C3C3Cff;
+}
+.bglight {
+    background-color: whitesmoke;
+}
+.txtlight {
+    color: whitesmoke;
+}
+.txtdark {
+    color: #3C3C3Cff;
+}
+.txtgreen{
+    color:#00BB00ff;
+}
 
+.txtmono{
+    font-family: 'Roboto Mono', monospace;
+}
+.txtspecial{
+    font-family: 'Press Start 2P', cursive;
+}
 /* 
 --middle-blue-green: #89CCC2ff;
 --forest-green-traditional: #003B00ff;
 --onyx: #3C3C3Cff;
 --alice-blue: #DDF3FEff;
 --yellow-green-color-wheel: #00BB00ff; 
+505050
 */
 
-*{
-    font-family: 'Montserrat', sans-serif;
+
+/* *{
+    font-family: 'Montserrat', sans-serif;   
 }
 
+.hero {
+    background-color: #3C3C3Cff;
+}
+div.hero-foot{
+    background-color: green;
+}
+.panel-block{
+    background-color: white;
+}
+
+.hide {
+    opacity:0;
+   
+}
+.show {
+    opacity:1;
+  
+}
+.press-start{
+    font-family: 'Press Start 2P', cursive;
+}
+
+footer {
+    background-color: #3C3C3Cff;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding-bottom: 2em;
+}
 .tr{
     padding: 1em 1.25em;
 }
@@ -30,3 +94,38 @@
 .is-green{
     background-color: #00BB00ff;
 }
+
+.dont_wrap {
+    height: auto !important;
+    white-space: unset !important;
+    color: purple !important;
+    width: 100%
+  }
+
+.mobile-img {
+    opacity: 75%;
+    float: right;
+
+}
+.mobile-box {
+    padding-top: 2em;
+    animation: move 4s;
+    width:50vw;
+    margin-right: 2em;
+
+}
+
+
+@keyframes move {
+    0% {
+        top: 0; right: -1em;
+    }
+    50% {
+        top: 0; right: 1em;
+    }
+    100% {
+        top: 0; right: 0em;
+    }
+} */
+
+  
