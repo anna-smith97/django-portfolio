@@ -52,7 +52,6 @@ class Job(models.Model):
         return {
             'title':self.title, 
             'company':self.company,
-            'tech':self.tech,
             'start':self.start_date,
             'end':self.end_date,
             'city':self.city,
